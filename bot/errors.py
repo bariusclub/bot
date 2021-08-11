@@ -1,6 +1,6 @@
 from typing import Hashable
 
-from converters import FetchedMember
+from converters import MemberOrUser
 
 
 class LockedResourceError(RuntimeError):
@@ -30,7 +30,7 @@ class InvalidInfractedUserError(Exception):
         `user` -- User or Member which is invalid
     """
 
-    def __init__(self, user: FetchedMember, reason: str = "User infracted is a bot."):
+    def __init__(self, user: MemberOrUser, reason: str = "User infracted is a bot."):
         self.user = user
         self.reason = reason
 
