@@ -2,7 +2,6 @@ import logging
 import re
 import typing as t
 from datetime import datetime
-from functools import partial
 from ssl import CertificateError
 
 import dateutil.parser
@@ -568,5 +567,4 @@ class Infraction(Converter):
 
 
 Expiry = t.Union[Duration, ISODateTime]
-FetchedMember = t.Union[discord.Member, FetchedUser]
-UserMention = partial(_snowflake_from_regex, RE_USER_MENTION)
+MemberOrUser = t.Union[discord.Member, discord.User]
