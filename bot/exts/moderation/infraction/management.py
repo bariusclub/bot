@@ -218,7 +218,11 @@ class ModManagement(commands.Cog):
             params={'user__id': str(user.id)}
         )
 
-        user_str = str(user if isinstance(user, (discord.Member, discord.User)) else user.id)
+        if isinstance(user, (discord.Member, discord.User)):
+            user_str = escape_markdown(user.name) + user.discriminator
+        else:
+            user_str = str(user.id)
+
         embed = discord.Embed(
             title=f"Infractions for {user_str} ({len(infraction_list)} total)",
             colour=discord.Colour.orange()
